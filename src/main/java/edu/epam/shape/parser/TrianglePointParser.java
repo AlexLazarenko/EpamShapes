@@ -20,7 +20,7 @@ public class TrianglePointParser {
             String[] numbers = line.split("\\s+");
             if (numbers.length!=6){
                 logger.warn("To create triangle three points needed!");
-             //   throw new ParserException("To create triangle three points needed!");
+             //   throw new ParserException("To create triangle three points needed!");//todo
                 continue;
             }
             for (String number : numbers) {

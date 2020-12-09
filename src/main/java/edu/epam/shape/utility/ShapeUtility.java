@@ -5,6 +5,6 @@ import edu.epam.shape.entity.Point2d;
 public class ShapeUtility {
 
     public static double calculateDistance(Point2d a, Point2d b) {
-        return Math.sqrt((b.getX() - a.getX()) * (b.getX() - a.getX()) + (b.getY() - a.getY() * (b.getY() - a.getY())));
+        return Math.sqrt(Math.pow(b.getX() - a.getX(), 2) + Math.pow(b.getY() - a.getY(), 2));
     }
 }

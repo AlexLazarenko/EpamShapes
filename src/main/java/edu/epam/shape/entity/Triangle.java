@@ -1,9 +1,9 @@
 package edu.epam.shape.entity;
 
 public class Triangle {
-private Point2d a;
-private Point2d b;
-private Point2d c;
+    private Point2d a;
+    private Point2d b;
+    private Point2d c;
 
     public Triangle(Point2d a, Point2d b, Point2d c) {
         this.a = a;
