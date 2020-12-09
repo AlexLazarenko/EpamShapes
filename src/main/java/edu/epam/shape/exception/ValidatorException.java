@@ -1,4 +1,4 @@
-package edu.epam.array.exception;
+package edu.epam.shape.exception;
 
 public class ValidatorException extends Exception {
     public ValidatorException() {

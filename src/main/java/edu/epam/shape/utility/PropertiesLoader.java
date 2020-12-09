@@ -1,3 +1,4 @@
+package edu.epam.shape.utility;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -7,7 +8,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class PropertiesLoader {
-    public final static String PROPERTY_PATH = "src/main/resources/config.properties";
+    public final static String PROPERTY_PATH = "src/main/resources/property/config.properties";
     private static final Logger logger = LogManager.getLogger(PropertiesLoader.class);
 
     public static String getProperty(String key) {
