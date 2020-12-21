@@ -2,14 +2,13 @@ package edu.epam.shape.action;
 
 import edu.epam.shape.entity.Point2d;
 import edu.epam.shape.entity.Triangle;
-import edu.epam.shape.exception.ServiceException;
 import edu.epam.shape.factory.TriangleType;
 import edu.epam.shape.utility.ShapeUtility;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Service {
-    private static final Logger logger = LogManager.getLogger(Service.class);
+public class TriangleService {
+    private static final Logger logger = LogManager.getLogger(TriangleService.class);
 
     public TriangleType identifyTriangle(Point2d a, Point2d b, Point2d c) {
         TriangleType type;

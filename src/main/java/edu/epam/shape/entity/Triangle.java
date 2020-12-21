@@ -1,6 +1,6 @@
 package edu.epam.shape.entity;
 
-import edu.epam.shape.action.Service;
+import edu.epam.shape.action.TriangleService;
 import edu.epam.shape.exception.ValidatorException;
 import edu.epam.shape.observer.Observable;
 import edu.epam.shape.observer.Observer;
@@ -9,7 +9,7 @@ import edu.epam.shape.validator.TriangleValidator;
 
 public abstract class Triangle implements Observable<ObserverImpl> {
     private final TriangleValidator validator = new TriangleValidator();
-    private final Service service=new Service();
+    private final TriangleService triangleService =new TriangleService();
     private Point2d a;
     private Point2d b;
     private Point2d c;

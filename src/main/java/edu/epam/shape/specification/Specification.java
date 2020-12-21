@@ -1,5 +1,7 @@
 package edu.epam.shape.specification;
 
-public interface Specification <T>{
-    boolean specify(T t);
+import edu.epam.shape.entity.Triangle;
+
+public interface Specification<T extends Triangle> {
+    boolean specifyBySquare(T t, double squareFrom, double squareTo);
 }

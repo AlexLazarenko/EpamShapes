@@ -1,31 +1,20 @@
 package edu.epam.shape.parser;
 
-import edu.epam.shape.action.Service;
 import edu.epam.shape.entity.Point2d;
-import edu.epam.shape.entity.Triangle;
 import edu.epam.shape.exception.ParserException;
 import edu.epam.shape.exception.ValidatorException;
-import edu.epam.shape.factory.TriangleFactory;
-import edu.epam.shape.factory.TriangleType;
-import edu.epam.shape.validator.TriangleValidator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 public class TrianglePointParser {
     private static final Logger logger = LogManager.getLogger(TrianglePointParser.class);
-    private final TriangleFactory factory = new TriangleFactory();
-    private final Service service = new Service();
-    private final TriangleValidator validator = new TriangleValidator();
 
-    public List<Triangle> trianglesFromFile(List<String> lines) throws ValidatorException {
-        List<Triangle> triangleList = new ArrayList<>();
+    public List<Point2d> trianglesFromFile(List<String> lines) throws ValidatorException {
         List<Point2d> point2DList = new ArrayList<>();
         List<Double> coordinatesList = new ArrayList<>();
-        TriangleType type;
         for (String line : lines) {
             String[] numbers = line.split("\\s+");
             try {
@@ -47,17 +36,7 @@ public class TrianglePointParser {
             point2DList.add(point);
             i++;
         }
-        for (int i = 0; i < point2DList.size(); i++) {
-            if (validator.isTriangle(point2DList.get(i), point2DList.get(i + 1), point2DList.get(i + 2))) {
-                type = service.identifyTriangle(point2DList.get(i), point2DList.get(i + 1), point2DList.get(i + 2));
-                Triangle triangle = factory.createTriangle(type, point2DList.get(i),
-                        point2DList.get(i + 1), point2DList.get(i + 2),
-                        UUID.randomUUID().toString().replace("-", ""));
-                triangleList.add(triangle);
-            }
-            i = i + 2;
-        }
-        logger.info("Triangle list from file: " + triangleList);
-        return triangleList;
+        logger.info("Points list from file: " + point2DList);
+        return point2DList;
     }
 }
