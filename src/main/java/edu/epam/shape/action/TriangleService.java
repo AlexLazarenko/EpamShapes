@@ -2,7 +2,7 @@ package edu.epam.shape.action;
 
 import edu.epam.shape.entity.Point2d;
 import edu.epam.shape.entity.Triangle;
-import edu.epam.shape.factory.TriangleType;
+import edu.epam.shape.entity.TriangleType;
 import edu.epam.shape.utility.ShapeUtility;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,30 +16,33 @@ public class TriangleService {
         double bToc = ShapeUtility.calculateDistance(b, c);
         double aToc = ShapeUtility.calculateDistance(a, c);
         if (aTob == aToc && aTob == bToc) {// identify triangle
-           type=TriangleType.EQUILATERAL;
+            type = TriangleType.EQUILATERAL;
         } else if ((aTob == bToc && aTob != aToc) || (aTob == aToc && aTob != bToc) || (bToc == aToc && aToc != aTob)) {
             type = TriangleType.ISOSCELES;
         } else {
             type = TriangleType.SIMPLE;
         }
+        logger.info("Type of the triangle is "+type);
         return type;
     }
+
     public TriangleType identifyTriangle(Triangle triangle) {
         TriangleType type;
         double aTob = ShapeUtility.calculateDistance(triangle.getA(), triangle.getB());
         double bToc = ShapeUtility.calculateDistance(triangle.getB(), triangle.getC());
         double aToc = ShapeUtility.calculateDistance(triangle.getA(), triangle.getC());
         if (aTob == aToc && aTob == bToc) {// identify triangle
-            type=TriangleType.EQUILATERAL;
+            type = TriangleType.EQUILATERAL;
         } else if ((aTob == bToc && aTob != aToc) || (aTob == aToc && aTob != bToc) || (bToc == aToc && aToc != aTob)) {
             type = TriangleType.ISOSCELES;
         } else {
             type = TriangleType.SIMPLE;
         }
+        logger.info("Type of the triangle is "+type);
         return type;
     }
 
-    public String identifyAngleType(Triangle triangle) {//throws ServiceException { //todo
+    public String identifyAngleType(Triangle triangle) {
         String type = "";
         double a = 0;
         double b = 0;
@@ -73,15 +76,13 @@ public class TriangleService {
             a = aToc;
             b = bToc;
         }
-      /*  if (a == 0 || b == 0 || c == 0) {
-            throw new ServiceException("Ops function answer is wrong!");
-        }*/
         result = Math.pow(c, 2) - Math.pow(a, 2) - Math.pow(b, 2);
         if (result < 0) {
             type = "sharp-angled";
         } else if (result == 0) {
             type = "right-angled";
         } else type = "obtuse";
+        logger.info("Angle type of the triangle is "+type);
         return type;
     }
 
@@ -90,6 +91,7 @@ public class TriangleService {
         double bToc = ShapeUtility.calculateDistance(triangle.getB(), triangle.getC());
         double aToc = ShapeUtility.calculateDistance(triangle.getA(), triangle.getC());
         double perimeter = aTob + bToc + aToc;
+        logger.info("Perimeter of the triangle is "+perimeter);
         return perimeter;
     }
 
@@ -101,6 +103,7 @@ public class TriangleService {
                 (calculatePerimeter(triangle) / 2 - aTob) *
                 (calculatePerimeter(triangle) / 2 - bToc) *
                 (calculatePerimeter(triangle) / 2 - aToc));
+        logger.info("Square of the triangle is "+square);
         return square;
     }
 }

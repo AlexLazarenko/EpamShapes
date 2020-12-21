@@ -9,10 +9,10 @@ import java.util.Comparator;
 public class TriangleSquareComparator implements Comparator<Triangle> {
     @Override
     public int compare(Triangle t1, Triangle t2) {
-        TriangleData dataT1= TriangleDataStorage.getInstance().readData(t1.getName());
-        TriangleData dataT2= TriangleDataStorage.getInstance().readData(t2.getName());
-        Double squareT1= dataT1.getSquare();
-        Double squareT2= dataT2.getSquare();
-        return squareT1.compareTo(squareT2);  //todo
+        TriangleData dataT1 = TriangleDataStorage.getInstance().readData(t1.getName());
+        TriangleData dataT2 = TriangleDataStorage.getInstance().readData(t2.getName());
+        Double squareT1 = dataT1.getSquare();
+        Double squareT2 = dataT2.getSquare();
+        return squareT1.compareTo(squareT2);
     }
 }

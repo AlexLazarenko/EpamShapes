@@ -8,15 +8,10 @@ import static org.testng.Assert.*;
 
 public class PropertiesLoaderTest {
 
-    @BeforeMethod
-    public void setUp() {
-    }
-
-    @AfterMethod
-    public void tearDown() {
-    }
-
     @Test
     public void testGetProperty() {
+        String expected = "src/test/resources/file/file.txt";
+        String actual = PropertiesLoader.getProperty("testFile.dir");
+        assertEquals(actual, expected);
     }
 }

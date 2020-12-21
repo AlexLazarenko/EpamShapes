@@ -2,7 +2,6 @@ package edu.epam.shape.parser;
 
 import edu.epam.shape.entity.Point2d;
 import edu.epam.shape.exception.ParserException;
-import edu.epam.shape.exception.ValidatorException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -12,7 +11,7 @@ import java.util.List;
 public class TrianglePointParser {
     private static final Logger logger = LogManager.getLogger(TrianglePointParser.class);
 
-    public List<Point2d> trianglesFromFile(List<String> lines) throws ValidatorException {
+    public List<Point2d> pointsFromFile(List<String> lines) {
         List<Point2d> point2DList = new ArrayList<>();
         List<Double> coordinatesList = new ArrayList<>();
         for (String line : lines) {

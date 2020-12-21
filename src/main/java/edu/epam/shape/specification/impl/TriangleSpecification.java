@@ -7,9 +7,9 @@ import edu.epam.shape.storage.TriangleDataStorage;
 
 public class TriangleSpecification implements Specification<Triangle> {
     @Override
-    public boolean specifyBySquare(Triangle triangle,double squareFrom, double squareTo) {
-        TriangleData data=TriangleDataStorage.getInstance().readData(triangle.getName());
-        double square= data.getSquare();
-        return (square>=squareFrom&&square<=squareTo);
+    public boolean specifyBySquare(Triangle triangle, double squareFrom, double squareTo) {
+        TriangleData data = TriangleDataStorage.getInstance().readData(triangle.getName());
+        double square = data.getSquare();
+        return (square >= squareFrom && square <= squareTo);
     }
 }

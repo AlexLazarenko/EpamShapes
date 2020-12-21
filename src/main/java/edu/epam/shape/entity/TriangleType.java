@@ -1,4 +1,4 @@
-package edu.epam.shape.factory;
+package edu.epam.shape.entity;
 
 public enum TriangleType {
     EQUILATERAL,

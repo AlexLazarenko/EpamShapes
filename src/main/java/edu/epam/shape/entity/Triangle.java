@@ -1,15 +1,11 @@
 package edu.epam.shape.entity;
 
-import edu.epam.shape.action.TriangleService;
-import edu.epam.shape.exception.ValidatorException;
+
 import edu.epam.shape.observer.Observable;
 import edu.epam.shape.observer.Observer;
-import edu.epam.shape.observer.impl.ObserverImpl;
-import edu.epam.shape.validator.TriangleValidator;
+import edu.epam.shape.observer.impl.TriangleObserver;
 
-public abstract class Triangle implements Observable<ObserverImpl> {
-    private final TriangleValidator validator = new TriangleValidator();
-    private final TriangleService triangleService =new TriangleService();
+public class Triangle extends Shape implements Observable<TriangleObserver> {
     private Point2d a;
     private Point2d b;
     private Point2d c;
@@ -27,7 +23,7 @@ public abstract class Triangle implements Observable<ObserverImpl> {
         return a;
     }
 
-    public void setA(Point2d a) throws ValidatorException {
+    public void setA(Point2d a) {
         this.a = a;
         notifyObserver();
     }
@@ -36,7 +32,7 @@ public abstract class Triangle implements Observable<ObserverImpl> {
         return b;
     }
 
-    public void setB(Point2d b) throws ValidatorException {
+    public void setB(Point2d b) {
         this.b = b;
         notifyObserver();
     }
@@ -45,7 +41,7 @@ public abstract class Triangle implements Observable<ObserverImpl> {
         return c;
     }
 
-    public void setC(Point2d c) throws ValidatorException {
+    public void setC(Point2d c) {
         this.c = c;
         notifyObserver();
     }
@@ -59,24 +55,21 @@ public abstract class Triangle implements Observable<ObserverImpl> {
     }
 
     @Override
-    public void attach(ObserverImpl observer) {
+    public void attach(TriangleObserver observer) {
         this.observer = observer;
     }
 
     @Override
-    public void detach(ObserverImpl observer) {
+    public void detach(TriangleObserver observer) {
         this.observer = null;
     }
 
     @Override
-    public void notifyObserver() throws ValidatorException {
+    public void notifyObserver() {
         if (observer != null) {
-            if(validator.isTriangle(this)) {
-             //   service.identifyTriangle(this);  //todo  change in repo?
-                observer.performAngleType(this);
-                observer.performPerimeter(this);
-                observer.performSquare(this);
-            }
+            observer.performAngleType(this);
+            observer.performPerimeter(this);
+            observer.performSquare(this);
         }
     }
 

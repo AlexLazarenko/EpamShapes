@@ -4,15 +4,13 @@ import edu.epam.shape.utility.PropertiesLoader;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ShapeFileReader {
     private static final Logger logger = LogManager.getLogger(ShapeFileReader.class);
+
 
     public List<String> readFromFile(String dir) {
         List<String> lines = new ArrayList<>();
@@ -23,6 +21,8 @@ public class ShapeFileReader {
                 lines.add(line);
                 line = reader.readLine();
             }
+        } catch (FileNotFoundException e) {
+            logger.error(e);
         } catch (IOException e) {
             logger.error(e);
         }
