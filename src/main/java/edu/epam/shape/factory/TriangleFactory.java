@@ -1,5 +1,6 @@
 package edu.epam.shape.factory;
 
+import edu.epam.shape.dto.TrianglePoints;
 import edu.epam.shape.entity.Point2d;
 import edu.epam.shape.entity.Triangle;
 import edu.epam.shape.exception.ValidatorException;
@@ -24,13 +25,12 @@ public class TriangleFactory {
         return triangle;
     }
 
-    public List<Triangle> createTrianglesFromList(List<Point2d> point2DList) throws ValidatorException {
+    public List<Triangle> createTrianglesFromList(List<TrianglePoints> points2DList) throws ValidatorException {
         List<Triangle> triangleList = new ArrayList<>();
-        for (int i = 0; i < point2DList.size(); i++) {
-            Triangle triangle = createTriangle(point2DList.get(i),
-                    point2DList.get(i + 1), point2DList.get(i + 2));
-            i = i + 2;
-            if (triangle != null) {
+        for (TrianglePoints trianglePoints : points2DList) {
+            if (trianglePoints != null){
+            Triangle triangle = createTriangle(trianglePoints.getA(),
+                    trianglePoints.getB(), trianglePoints.getC());
                 triangleList.add(triangle);
             }
         }

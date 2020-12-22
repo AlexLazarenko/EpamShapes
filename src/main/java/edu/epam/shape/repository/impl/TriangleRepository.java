@@ -10,13 +10,16 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TriangleRepository implements Repository<Triangle> {
-    private static final TriangleRepository instance = new TriangleRepository();
+    private static TriangleRepository instance;
     private List<Triangle> triangles = new ArrayList<>();
 
     private TriangleRepository() {
     }
 
     public static TriangleRepository getInstance() {
+        if (instance == null) {
+            instance = new TriangleRepository();
+        }
         return instance;
     }
 
